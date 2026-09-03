@@ -1,21 +1,34 @@
 package hexlet.code.schemas;
 
-import java.util.List;
-
 public class StringSchema {
-    private boolean required;
-    Integer minLength;
-    List<String> contains;
+    private boolean isRequired;
+    private Integer minLength;
+    private String substring;
 
-    public boolean isValid(Object value) {
-        if (value == null && required) {
+    public boolean isValid(String value) {
+        if (value == null || value.isEmpty()) {
+            return !isRequired;
+        } else if (minLength != null && value.length() < minLength) {
             return false;
-        } else {
+        } else if (substring != null && !value.contains(substring)) {
+            return false;
+        } else  {
             return true;
         }
     }
 
-    public boolean minLength(int minLength) {
-        return true;
+    public StringSchema required() {
+        isRequired = true;
+        return this;
+    }
+
+    public StringSchema minLength(int minLength) {
+        this.minLength = minLength;
+        return this;
+    }
+
+    public StringSchema contains(String substring) {
+        this.substring = substring;
+        return this;
     }
 }
