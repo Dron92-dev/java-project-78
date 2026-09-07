@@ -1,7 +1,8 @@
 package hexlet.code;
 
-import hexlet.code.schemas.StringSchema;
-
+/**
+ * Точка входа в приложение.
+ */
 public class App {
   public static void main(String[] args) {
     Validator validator = new Validator();

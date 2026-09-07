@@ -17,6 +17,7 @@ public class NumberSchema extends BaseSchema<Integer> {
 
   /**
    * Добавляет ограничение на положительное значение числа.
+   *
    * @return текущая схема
    */
   public NumberSchema positive() {
