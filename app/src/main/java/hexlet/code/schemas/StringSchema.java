@@ -1,34 +1,41 @@
 package hexlet.code.schemas;
 
-public class StringSchema {
-    private boolean isRequired;
-    private Integer minLength;
-    private String substring;
+/**
+ * Схема для валидации строк.
+ */
+public class StringSchema extends BaseSchema<String> {
 
-    public boolean isValid(String value) {
-        if (value == null || value.isEmpty()) {
-            return !isRequired;
-        } else if (minLength != null && value.length() < minLength) {
-            return false;
-        } else if (substring != null && !value.contains(substring)) {
-            return false;
-        } else  {
-            return true;
-        }
-    }
+  /**
+   * Делает значение обязательным.
+   *
+   * @return текущая схема
+   */
+  public StringSchema required() {
+    addCheck("required", value -> value != null && !value.isEmpty());
+    return this;
+  }
 
-    public StringSchema required() {
-        isRequired = true;
-        return this;
-    }
+  /**
+   * Добавляет ограничение минимальной длины строки.
+   *
+   * @param minLength минимальная допустимая длина
+   * @return текущая схема
+   */
+  public StringSchema minLength(int minLength) {
+    addCheck("minLength",
+        value -> (value == null) || (value.isEmpty()) || (value.length() >= minLength));
+    return this;
+  }
 
-    public StringSchema minLength(int minLength) {
-        this.minLength = minLength;
-        return this;
-    }
-
-    public StringSchema contains(String substring) {
-        this.substring = substring;
-        return this;
-    }
+  /**
+   * Добавляет ограничение на наличие подстроки.
+   *
+   * @param substring искомая подстрока
+   * @return текущая схема
+   */
+  public StringSchema contains(String substring) {
+    addCheck("contains",
+        value -> (value == null) || (value.isEmpty()) || (value.contains(substring)));
+    return this;
+  }
 }
