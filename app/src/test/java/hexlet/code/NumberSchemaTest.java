@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import hexlet.code.schemas.NumberSchema;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -11,6 +12,7 @@ import org.junit.jupiter.api.Test;
  */
 public class NumberSchemaTest {
   @Test
+  @DisplayName("Проверка обязательности числа")
   void testRequired() {
     Validator v = new Validator();
     NumberSchema schema = v.number();
@@ -22,6 +24,7 @@ public class NumberSchemaTest {
   }
 
   @Test
+  @DisplayName("Проверка положительности числа")
   void testPositive() {
     Validator v = new Validator();
     NumberSchema schema = v.number();
@@ -35,6 +38,7 @@ public class NumberSchemaTest {
   }
 
   @Test
+  @DisplayName("Проверка попадания числа в диапазон")
   void testRange() {
     Validator v = new Validator();
     NumberSchema schema = v.number();

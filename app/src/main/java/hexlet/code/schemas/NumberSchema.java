@@ -1,5 +1,7 @@
 package hexlet.code.schemas;
 
+import java.util.Objects;
+
 /**
  * Схема для валидации чисел.
  */
@@ -11,7 +13,7 @@ public class NumberSchema extends BaseSchema<Integer> {
    * @return текущая схема
    */
   public NumberSchema required() {
-    addCheck("required", value -> value != null);
+    addCheck("required", Objects::nonNull);
     return this;
   }
 

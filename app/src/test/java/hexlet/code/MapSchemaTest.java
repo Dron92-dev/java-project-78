@@ -7,6 +7,7 @@ import hexlet.code.schemas.BaseSchema;
 import hexlet.code.schemas.MapSchema;
 import java.util.HashMap;
 import java.util.Map;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -14,6 +15,7 @@ import org.junit.jupiter.api.Test;
  */
 public class MapSchemaTest {
   @Test
+  @DisplayName("Проверка обязательности Map")
   void testRequired() {
     Validator v = new Validator();
     MapSchema schema = v.map();
@@ -25,6 +27,7 @@ public class MapSchemaTest {
   }
 
   @Test
+  @DisplayName("Проверка размера Map")
   void testSizeof() {
     Validator v = new Validator();
     MapSchema schema = v.map();
@@ -42,6 +45,7 @@ public class MapSchemaTest {
   }
 
   @Test
+  @DisplayName("Проверка вложенной валидации Map")
   void testShape() {
     Validator v = new Validator();
     MapSchema schema = v.map();

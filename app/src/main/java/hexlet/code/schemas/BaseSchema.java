@@ -9,7 +9,7 @@ import java.util.function.Predicate;
  *
  * @param <T> тип валидируемого значения
  */
-public class BaseSchema<T> {
+public abstract class BaseSchema<T> {
   private final Map<String, Predicate<T>> rules = new HashMap<>();
 
   protected void addCheck(String nameRule, Predicate<T> rule) {

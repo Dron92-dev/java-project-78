@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import hexlet.code.schemas.StringSchema;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 
@@ -13,6 +14,7 @@ import org.junit.jupiter.api.Test;
 public class StringSchemaTest {
 
   @Test
+  @DisplayName("Проверка обязательности строки")
   void testRequired() {
     Validator v = new Validator();
     StringSchema schema = v.string();
@@ -28,6 +30,7 @@ public class StringSchemaTest {
   }
 
   @Test
+  @DisplayName("Проверка минимальной длины строки")
   void testMinLength() {
     Validator v = new Validator();
     StringSchema schema = v.string();
@@ -44,6 +47,7 @@ public class StringSchemaTest {
   }
 
   @Test
+  @DisplayName("Проверка наличия подстроки")
   void testContains() {
     Validator v = new Validator();
     StringSchema schema = v.string();
@@ -61,6 +65,7 @@ public class StringSchemaTest {
   }
 
   @Test
+  @DisplayName("Проверка совместной работы ограничений")
   void testMultipleConstraints() {
     Validator v = new Validator();
     StringSchema schema = v.string();
